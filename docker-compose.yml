@@ -27,7 +27,7 @@ gitlab:
     - SMTP_PASS=password
     - SMTP_STARTTLS=true
     - SMTP_AUTHENTICATION=login
-    - GITLAB_TIMEZONE=Europe/Paris
+    - GITLAB_TIMEZONE=Paris
     - GITLAB_HOST=localhost
     - GITLAB_PORT=10080
     - GITLAB_SSH_PORT=10022
@@ -47,9 +47,30 @@ redis:
   volumes_from:
     - data
 
+elk:
+  image: willdurand/elk
+  ports:
+    - "8090:80"
+  volumes:
+    - etc/ssl:/etc/ssl
+    - etc/logstash:/etc/logstash
+  volumes_from:
+    - data
+
+logstashforwarder:
+  image: willdurand/logstash-forwarder
+  links:
+    - elk:elk
+  volumes:
+    - etc/ssl:/etc/ssl
+    - etc/logstash-forwarder:/etc/logstash-forwarder
+  volumes_from:
+    - gitlab
+
 data:
   image: busybox
   volumes:
     - /home/git/data
     - /var/lib/postgresql
     - /var/lib/redis
+    - /var/lib/elasticsearch

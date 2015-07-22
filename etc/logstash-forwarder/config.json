@@ -1,0 +1,38 @@
+{
+    "network": {
+        "servers": [ "elk:5043" ],
+        "ssl certificate": "/etc/ssl/selfsigned.crt",
+        "ssl key": "/etc/ssl/selfsigned.key",
+        "ssl ca": "/etc/ssl/selfsigned.crt"
+    },
+    "files": [
+        {
+            "paths": ["/var/log/gitlab/gitlab/production.log"],
+            "fields": { "type": "gitlabproductionlog" }
+        },
+        {
+            "paths": ["/home/git/gitlab/log/unicorn.stderr.log"],
+            "fields": { "type": "gitlabunicornerrlog"}
+        },
+        {
+            "paths": ["/home/git/gitlab/log/unicorn.stdout.log"],
+            "fields": { "type": "gitlabunicornoutlog"}
+        },
+        {
+            "paths": ["/home/git/gitlab/log/githost.log"],
+            "fields": { "type": "gitlabhostlog"}
+        },
+        {
+            "paths": ["/home/git/gitlab/log/sidekiq.log"],
+            "fields": { "type": "gitlabsidekiqlog"}
+        },
+        {
+            "paths": ["/home/git/gitlab/log/satellites.log"],
+            "fields": { "type": "gitlabsatlog"}
+        },
+        {
+            "paths": ["/var/log/gitlab/gitlab/application.log"],
+            "fields": { "type": "gitlabapplicationlog"}
+        }
+    ]
+}
