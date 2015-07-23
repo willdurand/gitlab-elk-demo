@@ -12,13 +12,13 @@ $ wget https://raw.githubusercontent.com/driskell/log-courier/develop/src/lc-tls
 $ go run lc-tlscert.go
 ```
 
-Then, move the generated `selfsigned.{crt,key}` files `etc/ssl/`:
+Then, move the generated `selfsigned.{crt,key}` files to `etc/ssl/`:
 
 ```
 $ mv selfsigned.{crt,key} etc/ssl/
 ```
 
-Up all the things!
+Finally, up all the things!
 
 ```
 $ docker-compose up
