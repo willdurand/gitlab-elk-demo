@@ -1,7 +1,14 @@
 Gitlab + ELK
 ============
 
-## Usage
+This is a demo project showing how to integrate
+[Gitlab](https://about.gitlab.com/) with the well-known **E**lasticsearch
+**L**ogstash **K**ibana (ELK) stack. It features
+[willdurand/docker-elk](https://github.com/willdurand/docker-elk) and
+[willdurand/docker-logstash-forwarder](https://github.com/willdurand/docker-logstash-forwarder).
+
+Quick Start
+-----------
 
 First, use the
 [lc-tlscert](https://github.com/driskell/log-courier/blob/develop/src/lc-tlscert/lc-tlscert.go)
@@ -25,25 +32,30 @@ $ docker-compose up
 ```
 
 
+Configuration
+-------------
+
+The Kibana dashboard is available at: `http://<host>:10090/` (with `host`, an
+address that points to your Docker environment e.g., `localhost` or
+`192.168.59.103`).
+
+Gitlab web interface is available at: `http://<host>:10080/` and its SSH port is
+`10022`. A default account is configured: `root`/`5iveL!fe`. More information
+at: [sameersbn/docker-gitlab](https://github.com/sameersbn/docker-gitlab).
+
+A Docker `data` container is used to persist (and share) data among all other
+containers.
+
+
+Credits
+-------
+
+The Logstash configuration is based on [this
+gist](https://gist.github.com/jerrac/d19e49e77819ef82de6e).
+
+
 License
 -------
 
-Copyright (c) William Durand <will+git@drnd.me>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is furnished
-to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+This project is released under the MIT License. See the bundled LICENSE file for
+details.
